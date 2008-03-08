@@ -1,5 +1,86 @@
 # encoding=UTF-8
 
+__doc__ = ur'''
+Polish text representation of numbers.
+
+>>> slownie(0)
+u'zero'
+>>> slownie(1)
+u'jeden'
+>>> slownie(2)
+u'dwa'
+>>> slownie(4)
+u'cztery'
+>>> slownie(8)
+u'osiem'
+>>> slownie(16)
+u'szesnaście'
+>>> slownie(17)
+u'siedemnaście'
+>>> slownie(23)
+u'dwadzieścia trzy'
+>>> slownie(32)
+u'trzydzieści dwa'
+>>> slownie(37)
+u'trzydzieści siedem'
+>>> slownie(42)
+u'czterdzieści dwa'
+>>> slownie(64)
+u'sześćdziesiąt cztery'
+>>> slownie(69)
+u'sześćdziesiąt dziewięć'
+>>> slownie(105)
+u'sto pięć'
+>>> slownie(128)
+u'sto dwadzieścia osiem'
+>>> slownie(256)
+u'dwieście pięćdziesiąt sześć'
+>>> slownie(512)
+u'pięćset dwanaście'
+>>> slownie(666)
+u'sześćset sześćdziesiąt sześć'
+>>> slownie(1024)
+u'tysiąc dwadzieścia cztery'
+>>> slownie(1024, jeden=True)
+u'jeden tysiąc dwadzieścia cztery'
+>>> slownie(1 << 11)
+u'dwa tysiące czterdzieści osiem'
+>>> slownie(1 << 12)
+u'cztery tysiące dziewięćdziesiąt sześć'
+>>> slownie(1 << 13)
+u'osiem tysięcy sto dziewięćdziesiąt dwa'
+>>> slownie(1 << 14)
+u'szesnaście tysięcy trzysta osiemdziesiąt cztery'
+>>> slownie(1 << 15)
+u'trzydzieści dwa tysiące siedemset sześćdziesiąt osiem'
+>>> slownie(1 << 16)
+u'sześćdziesiąt pięć tysięcy pięćset trzydzieści sześć'
+>>> slownie(1 << 17)
+u'sto trzydzieści jeden tysięcy siedemdziesiąt dwa'
+>>> slownie(1 << 18)
+u'dwieście sześćdziesiąt dwa tysiące sto czterdzieści cztery'
+>>> slownie(1 << 19)
+u'pięćset dwadzieścia cztery tysiące dwieście osiemdziesiąt osiem'
+>>> slownie(1 << 20)
+u'milion czterdzieści osiem tysięcy pięćset siedemdziesiąt sześć'
+>>> slownie(1 << 20, jeden=True)
+u'jeden milion czterdzieści osiem tysięcy pięćset siedemdziesiąt sześć'
+>>> slownie(17 ** 17)
+u'osiemset dwadzieścia siedem trylionów dwieście czterdzieści biliardów dwieście sześćdziesiąt jeden bilionów osiemset osiemdziesiąt sześć miliardów trzysta trzydzieści sześć milionów siedemset sześćdziesiąt cztery tysiące sto siedemdziesiąt siedem'
+>>> slownie(10 ** 66 - 1)
+u'dziewięćset dziewięćdziesiąt dziewięć decyliardów dziewięćset dziewięćdziesiąt dziewięć decylionów dziewięćset dziewięćdziesiąt dziewięć noniliardów dziewięćset dziewięćdziesiąt dziewięć nonilionów dziewięćset dziewięćdziesiąt dziewięć oktyliardów dziewięćset dziewięćdziesiąt dziewięć oktylionów dziewięćset dziewięćdziesiąt dziewięć septyliardów dziewięćset dziewięćdziesiąt dziewięć septylionów dziewięćset dziewięćdziesiąt dziewięć sekstyliardów dziewięćset dziewięćdziesiąt dziewięć sekstylionów dziewięćset dziewięćdziesiąt dziewięć kwintyliardów dziewięćset dziewięćdziesiąt dziewięć kwintylionów dziewięćset dziewięćdziesiąt dziewięć kwadryliardów dziewięćset dziewięćdziesiąt dziewięć kwadrylionów dziewięćset dziewięćdziesiąt dziewięć tryliardów dziewięćset dziewięćdziesiąt dziewięć trylionów dziewięćset dziewięćdziesiąt dziewięć biliardów dziewięćset dziewięćdziesiąt dziewięć bilionów dziewięćset dziewięćdziesiąt dziewięć miliardów dziewięćset dziewięćdziesiąt dziewięć milionów dziewięćset dziewięćdziesiąt dziewięć tysięcy dziewięćset dziewięćdziesiąt dziewięć'
+
+>>> slownie(10 ** 66)
+Traceback (most recent call last):
+...
+ValueError: i >= 10 ** 66
+>>> slownie(-1)
+Traceback (most recent call last):
+...
+ValueError: i < 0
+'''
+__doc__ = '\n'.join(line.encode('unicode-escape') for line in __doc__.splitlines())
+
 SLOWNIE_1X = u'''
 #        jeden      dwa       trzy       cztery      pięć       sześć      siedem       osiem       dziewięć
 dziesięć jedenaście dwanaście trzynaście czternaście piętnaście szesnaście siedemnaście osiemnaście dziewiętnaście
