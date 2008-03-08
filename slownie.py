@@ -32,7 +32,6 @@ del suffix
 def inflect(i, forms):
 	if forms is None:
 		return None
-	print forms
 	form_1, form_2, form_5 = forms
 	if i == 1:
 		return form_1
