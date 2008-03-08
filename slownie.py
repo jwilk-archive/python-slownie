@@ -105,7 +105,7 @@ SLOWNIE_1000XX = \
 	[(base, base + 'y', base + u'ów') for i in xrange(2 * len(PREFIXES)) for base in [PREFIXES[i >> 1] + (i & 1 and 'liard' or 'lion')]]
 del i, base
 
-SLOWNIE_0 = 'zero'
+SLOWNIE_0 = u'zero'
 
 UNIT_ZLOTY = [u'złot' + suffix for suffix in ('y', 'e', 'ych')]
 del suffix
