@@ -66,7 +66,6 @@ def slownie(i, jeden=False, unit=None):
 	if i == 1:
 		return SLOWNIE_1X[1]
 	words = [inflect(i, unit)]
-	print words
 	m = 0
 	while i > 0:
 		i, j = divmod(i, 1000)
