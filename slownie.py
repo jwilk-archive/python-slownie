@@ -8,40 +8,36 @@ dziesięć jedenaście dwanaście trzynaście czternaście piętnaście szesnaś
 SLOWNIE_10X = u'''
 # # dwadzieścia trzydzieści czterdzieści
 '''.split() + [u'%sdziesiąt' % SLOWNIE_1X[i] for i in xrange(5, 10)]
+del i
 
 SLOWNIE_100X = u'''
 # sto dwieście trzysta czterysta
 '''.split() + ['%sset' % SLOWNIE_1X[i] for i in xrange(5, 10)]
+del i
 
 SLOWNIE_1X[0] = SLOWNIE_10X[0] = SLOWNIE_10X[1] = SLOWNIE_100X[0] = None
 
 PREFIXES = 'mi bi try kwadry kwinty seksty septy okty noni decy'.split()
 
-SLOWNIE_1000XX = [None, u'tysiąc'] + [PREFIXES[i >> 1] + (i & 1 and 'liard' or 'lion') for i in xrange(2 * len(PREFIXES))]
+SLOWNIE_1000XX = \
+	[None, (u'tysiąc', u'tysiące', u'tysięcy')] + \
+	[(base, base + 'y', base + u'ów') for i in xrange(2 * len(PREFIXES)) for base in [PREFIXES[i >> 1] + (i & 1 and 'liard' or 'lion')]]
+del i, base
 
 SLOWNIE_0 = 'zero'
 
-del i
-
-def inflect(i, base):
-	if base is None:
+def inflect(i, forms):
+	if forms is None:
 		return None
+	print forms
+	form_1, form_2, form_5 = forms
 	if i == 1:
-		suffix = ''
-		return base
+		return form_1
 	i = i % 100
 	if i in (2, 3, 4) or (i > 20 and i % 10 in (2, 3, 4)):
-		if base[-1] == 'c':
-			suffix = 'e'
-		else:
-			suffix = 'y'
+		return form_2
 	else:
-		if base[-2:] == u'ąc':
-			base = base[:-2]
-			suffix = u'ęcy'
-		else:
-			suffix = u'ów'
-	return base + suffix
+		return form_5
 
 def slownie999(i):
 	i = int(i)
