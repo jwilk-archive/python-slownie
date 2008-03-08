@@ -26,6 +26,9 @@ del i, base
 
 SLOWNIE_0 = 'zero'
 
+UNIT_ZLOTY = [u'złot' + suffix for suffix in ('y', 'e', 'ych')]
+del suffix
+
 def inflect(i, forms):
 	if forms is None:
 		return None
@@ -54,7 +57,7 @@ def slownie999(i):
 		words += (SLOWNIE_10X[i // 10], SLOWNIE_1X[i % 10])
 	return ' '.join(word for word in words if word)
 
-def slownie(i, jeden=False):
+def slownie(i, jeden=False, unit=None):
 
 	i = int(i)
 	if i < 0:
@@ -63,7 +66,8 @@ def slownie(i, jeden=False):
 		return SLOWNIE_0
 	if i == 1:
 		return SLOWNIE_1X[1]
-	words = []
+	words = [inflect(i, unit)]
+	print words
 	m = 0
 	while i > 0:
 		i, j = divmod(i, 1000)
@@ -79,6 +83,6 @@ def slownie(i, jeden=False):
 		m += 1
 	return ' '.join(word for word in words if word)
 
-__all__ = 'slownie',
+__all__ = 'slownie', 'UNIT_ZLOTY'
 
 # vim:ts=4 sw=4 noet
