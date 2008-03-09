@@ -109,8 +109,7 @@ del i, base
 
 SLOWNIE_0 = u'zero'
 
-UNIT_ZLOTY = [u'złot' + suffix for suffix in (u'y', u'e', u'ych')]
-del suffix
+UNIT_ZLOTY = tuple(u'złot' + suffix for suffix in (u'y', u'e', u'ych'))
 
 def inflect(i, forms):
 	if forms is None:
