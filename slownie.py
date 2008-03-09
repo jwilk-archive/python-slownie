@@ -165,4 +165,8 @@ def slownie(i, jeden=False, unit=None):
 
 __all__ = 'slownie', 'UNIT_ZLOTY'
 
+if __name__ == '__main__':
+	import doctest
+	doctest.testmod()
+
 # vim:ts=4 sw=4 noet
