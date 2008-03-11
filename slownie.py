@@ -145,10 +145,13 @@ def slownie(i, jeden=False, unit=None):
 	if i < 0:
 		raise ValueError('i < 0')
 	if i == 0:
-		return SLOWNIE_0
-	if i == 1:
-		return SLOWNIE_1X[1]
-	words = [inflect(i, unit)]
+		words = [SLOWNIE_0]
+	elif i == 1:
+		words = [SLOWNIE_1X[1]]
+		i = 0
+	else:
+		words = []
+	words += inflect(i, unit),
 	m = 0
 	while i > 0:
 		i, j = divmod(i, 1000)
