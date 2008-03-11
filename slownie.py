@@ -110,6 +110,7 @@ del i, base
 SLOWNIE_0 = u'zero'
 
 UNIT_ZLOTY = tuple(u'złot' + suffix for suffix in (u'y', u'e', u'ych'))
+UNIT_GROSZ = tuple(u'grosz' + suffix for suffix in (u'y', u'e', u'y'))
 
 def inflect(i, forms):
 	if forms is None:
@@ -163,7 +164,7 @@ def slownie(i, jeden=False, unit=None):
 		m += 1
 	return u' '.join(word for word in words if word)
 
-__all__ = 'slownie', 'UNIT_ZLOTY'
+__all__ = 'slownie', 'UNIT_ZLOTY', 'UNIT_GROSZ'
 
 if __name__ == '__main__':
 	import doctest
