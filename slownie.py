@@ -16,7 +16,7 @@
 
 __author__ = 'Jakub Wilk <ubanus@users.sf.net>'
 __date__ = '2008-04-01'
-__version__ = '0.hg14'
+__version__ = '0.hg15'
 
 __doc__ = ur'''
 Polish text representation of numbers.
@@ -166,10 +166,11 @@ def slownie(i, jeden=False, unit=None):
 		words = [SLOWNIE_0]
 	elif i == 1:
 		words = [SLOWNIE_1X[1]]
-		i = 0
 	else:
 		words = []
 	words += inflect(i, unit),
+	if i == 1:
+		i = 0
 	m = 0
 	while i > 0:
 		i, j = divmod(i, 1000)
