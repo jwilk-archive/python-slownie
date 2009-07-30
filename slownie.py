@@ -15,8 +15,8 @@
 # this program; if not, see <http://www.gnu.org/licenses>.
 
 __author__ = 'Jakub Wilk <ubanus@users.sf.net>'
-__date__ = '2008-12-09'
-__version__ = '0.hg15.py3k'
+__date__ = '2009-07-30'
+__version__ = '0.hg18.py3k'
 
 __doc__ = r'''
 Polish text representation of numbers.
@@ -124,7 +124,7 @@ SLOWNIE_1000XX = \
 SLOWNIE_0 = 'zero'
 
 UNIT_ZLOTY = tuple('złot' + suffix for suffix in ('y', 'e', 'ych'))
-UNIT_GROSZ = tuple('grosz' + suffix for suffix in ('y', 'e', 'y'))
+UNIT_GROSZ = tuple('grosz' + suffix for suffix in ('', 'e', 'y'))
 
 def inflect(i, forms):
     if forms is None:
