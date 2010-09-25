@@ -19,11 +19,23 @@ import distutils.core
 
 os.putenv('TAR_OPTIONS', '--owner root --group root --mode a+rX')
 
-from slownie import __version__
+def get_version():
+    d = {}
+    file = open('slownie.py')
+    try:
+        for line in file:
+            if line.startswith(('__date__ = ', '__version__ =')):
+                exec(line, d)
+    finally:
+        file.close()
+    try:
+        return d['__version__']
+    except LookupError:
+        raise IOError('Unexpected end-of-file')
 
 distutils.core.setup(
     name = 'python-slownie',
-    version = __version__,
+    version = get_version(),
     license = 'MIT',
     description = 'Polish spelled-out numbers',
     long_description = __doc__.strip(),
@@ -31,7 +43,7 @@ distutils.core.setup(
     url = 'http://jwilk.net/software/python-slownie',
     author = 'Jakub Wilk',
     author_email = 'jwilk@jwilk.net',
-    py_modules = ['slownie']
+    py_modules = ['slownie'],
 )
 
 # vim:ts=4 sw=4 et
