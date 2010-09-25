@@ -34,13 +34,11 @@ dziesięć jedenaście dwanaście trzynaście czternaście piętnaście szesnaś
 
 SLOWNIE_10X = u'''
 # # dwadzieścia trzydzieści czterdzieści
-'''.split() + [u'%sdziesiąt' % SLOWNIE_1X[i] for i in xrange(5, 10)]
-del i
+'''.split() + list(u'%sdziesiąt' % SLOWNIE_1X[i] for i in xrange(5, 10))
 
 SLOWNIE_100X = u'''
 # sto dwieście trzysta czterysta
-'''.split() + [u'%sset' % SLOWNIE_1X[i] for i in xrange(5, 10)]
-del i
+'''.split() + list(u'%sset' % SLOWNIE_1X[i] for i in xrange(5, 10))
 
 SLOWNIE_1X[0] = SLOWNIE_10X[0] = SLOWNIE_10X[1] = SLOWNIE_100X[0] = None
 
@@ -48,8 +46,7 @@ PREFIXES = u'mi bi try kwadry kwinty seksty septy okty noni decy'.split()
 
 SLOWNIE_1000XX = \
     [None, (u'tysiąc', u'tysiące', u'tysięcy')] + \
-    [(base, base + u'y', base + u'ów') for i in xrange(2 * len(PREFIXES)) for base in [PREFIXES[i >> 1] + (i & 1 and u'liard' or u'lion')]]
-del i, base
+    list((base, base + u'y', base + u'ów') for i in xrange(2 * len(PREFIXES)) for base in [PREFIXES[i >> 1] + (i & 1 and u'liard' or u'lion')])
 
 SLOWNIE_0 = u'zero'
 

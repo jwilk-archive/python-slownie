@@ -15,7 +15,15 @@ Topic :: Text Processing :: Linguistic
 '''.strip().split('\n')
 
 import os
+import sys
+
 import distutils.core
+import distutils.command.build_py
+
+if sys.version_info >= (3,):
+    build_py = distutils.command.build_py.build_py_2to3
+else:
+    build_py = distutils.command.build_py.build_py
 
 os.putenv('TAR_OPTIONS', '--owner root --group root --mode a+rX')
 
@@ -44,6 +52,7 @@ distutils.core.setup(
     author = 'Jakub Wilk',
     author_email = 'jwilk@jwilk.net',
     py_modules = ['slownie'],
+    cmdclass = dict(build_py=build_py),
 )
 
 # vim:ts=4 sw=4 et
