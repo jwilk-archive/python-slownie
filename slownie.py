@@ -1,6 +1,6 @@
 # encoding=UTF-8
 #
-# Copyright © 2008 Jakub Wilk <ubanus@users.sf.net>
+# Copyright © 2008 Jakub Wilk <jwilk@jwilk.net>
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License, version 2, as published
@@ -14,9 +14,9 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <http://www.gnu.org/licenses>.
 
-__author__ = 'Jakub Wilk <ubanus@users.sf.net>'
-__date__ = '2009-07-30'
-__version__ = '0.hg18'
+__author__ = 'Jakub Wilk <jwilk@jwilk.net>'
+__date__ = '2010-09-25'
+__version__ = '0.%s' % __date__.replace('-', '')
 
 __doc__ = ur'''
 Polish text representation of numbers.
