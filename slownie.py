@@ -1,6 +1,6 @@
 # encoding=UTF-8
 #
-# Copyright © 2008, 2009, 2010 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2008, 2009, 2010, 2011 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -24,7 +24,7 @@
 Polish text representation of numbers.
 '''
 __author__ = 'Jakub Wilk <jwilk@jwilk.net>'
-__date__ = '2010-09-25'
+__date__ = '2011-02-25'
 __version__ = '0.%s' % __date__.replace('-', '')
 
 SLOWNIE_1X = u'''
