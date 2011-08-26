@@ -14,7 +14,6 @@ Programming Language :: Python :: 3
 Topic :: Text Processing :: Linguistic
 '''.strip().split('\n')
 
-import os
 import sys
 
 import distutils.core
@@ -24,8 +23,6 @@ if sys.version_info >= (3,):
     build_py = distutils.command.build_py.build_py_2to3
 else:
     build_py = distutils.command.build_py.build_py
-
-os.putenv('TAR_OPTIONS', '--owner root --group root --mode a+rX')
 
 def get_version():
     d = {}
