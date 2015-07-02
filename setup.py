@@ -24,6 +24,8 @@
 *python-slownie* provides routines to spell out numbers in Polish.
 '''
 
+from __future__ import with_statement
+
 classifiers = '''
 Development Status :: 4 - Beta
 Intended Audience :: Developers
@@ -48,13 +50,10 @@ else:
 
 def get_version():
     d = {}
-    file = open('slownie.py')
-    try:
+    with open('slownie.py') as file:
         for line in file:
             if line.startswith(('__date__ = ', '__version__ =')):
                 exec(line, d)
-    finally:
-        file.close()
     return d['__version__']
 
 distutils.core.setup(
