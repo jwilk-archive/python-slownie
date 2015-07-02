@@ -1,3 +1,9 @@
+python-slownie (1.0) UNRELEASED; urgency=low
+
+  * 
+
+ -- Jakub Wilk <jwilk@jwilk.net>  Thu, 02 Jul 2015 19:20:36 +0200
+
 python-slownie (0.20110225) unstable; urgency=low
 
   * Use 2to3 in the setup script.
