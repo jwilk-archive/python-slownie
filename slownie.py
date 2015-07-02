@@ -1,6 +1,6 @@
 # encoding=UTF-8
 
-# Copyright © 2008-2011 Jakub Wilk <jwilk@jwilk.net>
+# Copyright © 2008-2015 Jakub Wilk <jwilk@jwilk.net>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the “Software”), to deal
@@ -110,9 +110,5 @@ def slownie(i, jeden=False, unit=None):
     return u' '.join(word for word in words if word)
 
 __all__ = 'slownie', 'UNIT_ZLOTY', 'UNIT_GROSZ'
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
 
 # vim:ts=4 sw=4 et
