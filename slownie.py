@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 '''
-Polish text representation of numbers.
+Polish spelled-out numbers
 '''
 __author__ = 'Jakub Wilk <jwilk@jwilk.net>'
 __version__ = '1.0'
