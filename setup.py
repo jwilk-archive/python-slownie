@@ -50,7 +50,10 @@ else:
 
 def get_version():
     d = {}
-    with open('slownie.py') as file:
+    enc = {}
+    if sys.version_info >= (3,):
+        enc.update(encoding='UTF-8')
+    with open('slownie.py', **enc) as file:
         for line in file:
             if line.startswith(('__date__ = ', '__version__ =')):
                 exec(line, d)
