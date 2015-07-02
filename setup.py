@@ -55,7 +55,7 @@ def get_version():
         enc.update(encoding='UTF-8')
     with open('slownie.py', **enc) as file:
         for line in file:
-            if line.startswith(('__date__ = ', '__version__ =')):
+            if line.startswith('__version__ ='):
                 exec(line, d)
     return d['__version__']
 

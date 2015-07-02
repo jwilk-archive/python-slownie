@@ -24,7 +24,6 @@
 Polish text representation of numbers.
 '''
 __author__ = 'Jakub Wilk <jwilk@jwilk.net>'
-__date__ = '2011-02-25'
 __version__ = '1.0'
 
 SLOWNIE_1X = u'''
