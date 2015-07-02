@@ -1,0 +1,6 @@
+python-slownie (0.20110225) unstable; urgency=low
+
+  * Use 2to3 in the setup script.
+  * Improve the test suite.
+
+ -- Jakub Wilk <jwilk@debian.org>  Fri, 25 Feb 2011 13:35:42 +0100
