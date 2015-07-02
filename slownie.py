@@ -109,6 +109,6 @@ def slownie(i, jeden=False, unit=None):
         m += 1
     return u' '.join(word for word in words if word)
 
-__all__ = 'slownie', 'UNIT_ZLOTY', 'UNIT_GROSZ'
+__all__ = ['slownie', 'UNIT_ZLOTY', 'UNIT_GROSZ']
 
 # vim:ts=4 sw=4 et
