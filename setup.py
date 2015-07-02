@@ -39,17 +39,17 @@ def get_version():
         raise IOError('Unexpected end-of-file')
 
 distutils.core.setup(
-    name = 'python-slownie',
-    version = get_version(),
-    license = 'MIT',
-    description = 'Polish spelled-out numbers',
-    long_description = __doc__.strip(),
-    classifiers = classifiers,
-    url = 'http://jwilk.net/software/python-slownie',
-    author = 'Jakub Wilk',
-    author_email = 'jwilk@jwilk.net',
-    py_modules = ['slownie'],
-    cmdclass = dict(build_py=build_py),
+    name='python-slownie',
+    version=get_version(),
+    license='MIT',
+    description='Polish spelled-out numbers',
+    long_description=__doc__.strip(),
+    classifiers=classifiers,
+    url='http://jwilk.net/software/python-slownie',
+    author='Jakub Wilk',
+    author_email='jwilk@jwilk.net',
+    py_modules=['slownie'],
+    cmdclass=dict(build_py=build_py),
 )
 
 # vim:ts=4 sw=4 et
