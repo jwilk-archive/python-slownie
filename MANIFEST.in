@@ -1,2 +1,2 @@
-include test/test.py
 include MANIFEST.in
+include test/test.py
