@@ -24,7 +24,7 @@
 Polish spelled-out numbers
 '''
 __author__ = 'Jakub Wilk <jwilk@jwilk.net>'
-__version__ = '1.0'
+__version__ = '1.1'
 
 SLOWNIE_1X = u'''
 #        jeden      dwa       trzy       cztery      pięć       sześć      siedem       osiem       dziewięć
