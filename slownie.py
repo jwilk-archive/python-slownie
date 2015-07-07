@@ -71,10 +71,10 @@ def slownie999(i):
     if i > 999:
         raise ValueError
     words = []
-    words += SLOWNIE_100X[i // 100],
+    words += [SLOWNIE_100X[i // 100]]
     i = i % 100
     if i < 20:
-        words += SLOWNIE_1X[i],
+        words += [SLOWNIE_1X[i]]
     else:
         words += (SLOWNIE_10X[i // 10], SLOWNIE_1X[i % 10])
     return u' '.join(word for word in words if word)
@@ -90,7 +90,7 @@ def slownie(i, jeden=False, unit=None):
         words = [SLOWNIE_1X[1]]
     else:
         words = []
-    words += inflect(i, unit),
+    words += [inflect(i, unit)]
     if i == 1:
         i = 0
     m = 0
