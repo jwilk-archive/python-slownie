@@ -1,8 +1,8 @@
 python-slownie (1.1) UNRELEASED; urgency=low
 
-  * 
+  * Drop support for Python 2.5.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Tue, 07 Jul 2015 09:30:32 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Mon, 20 Jul 2015 11:48:40 +0200
 
 python-slownie (1.0) unstable; urgency=low
 

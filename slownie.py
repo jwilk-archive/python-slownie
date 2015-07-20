@@ -33,11 +33,11 @@ dziesięć jedenaście dwanaście trzynaście czternaście piętnaście szesnaś
 
 SLOWNIE_10X = u'''
 # # dwadzieścia trzydzieści czterdzieści
-'''.split() + list(u'%sdziesiąt' % SLOWNIE_1X[i] for i in xrange(5, 10))
+'''.split() + list(u'{n}dziesiąt'.format(n=SLOWNIE_1X[i]) for i in xrange(5, 10))
 
 SLOWNIE_100X = u'''
 # sto dwieście trzysta czterysta
-'''.split() + list(u'%sset' % SLOWNIE_1X[i] for i in xrange(5, 10))
+'''.split() + list(u'{n}set'.format(n=SLOWNIE_1X[i]) for i in xrange(5, 10))
 
 SLOWNIE_1X[0] = SLOWNIE_10X[0] = SLOWNIE_10X[1] = SLOWNIE_100X[0] = None
 
@@ -104,7 +104,7 @@ def slownie(i, jeden=False, unit=None):
             try:
                 words = [t, inflect(j, SLOWNIE_1000XX[m])] + words
             except IndexError:
-                raise ValueError('i >= 10 ** %d' % (3 * len(SLOWNIE_1000XX)))
+                raise ValueError('i >= 10 ** {n}'.format(n=3 * len(SLOWNIE_1000XX)))
         m += 1
     return u' '.join(word for word in words if word)
 
