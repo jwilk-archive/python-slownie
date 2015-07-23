@@ -6,8 +6,8 @@ python:
 - "3.2"
 - "3.3"
 - "3.4"
-- "nightly"
-- "pypy3"
+- nightly
+- pypy3
 script:
 - python setup.py build
 - cp -r build/lib*/slownie.py test/
