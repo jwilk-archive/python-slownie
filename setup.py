@@ -29,18 +29,6 @@ from __future__ import with_statement
 # supported, so that people running setup.py against the unsupported version
 # get a nice error message instead of SyntaxError.
 
-classifiers = '''
-Development Status :: 4 - Beta
-Intended Audience :: Developers
-License :: OSI Approved :: MIT License
-Natural Language :: Polish
-Operating System :: OS Independent
-Programming Language :: Python
-Programming Language :: Python :: 2
-Programming Language :: Python :: 3
-Topic :: Text Processing :: Linguistic
-'''.strip().splitlines()
-
 import sys
 
 import distutils.core
@@ -64,6 +52,18 @@ def get_version():
             if line.startswith('__version__ ='):
                 exec(line, d)
     return d['__version__']
+
+classifiers = '''
+Development Status :: 4 - Beta
+Intended Audience :: Developers
+License :: OSI Approved :: MIT License
+Natural Language :: Polish
+Operating System :: OS Independent
+Programming Language :: Python
+Programming Language :: Python :: 2
+Programming Language :: Python :: 3
+Topic :: Text Processing :: Linguistic
+'''.strip().splitlines()
 
 distutils.core.setup(
     name='python-slownie',
