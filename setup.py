@@ -29,14 +29,16 @@ from __future__ import with_statement
 # supported, so that people running setup.py against the unsupported version
 # get a nice error message instead of SyntaxError.
 
-import io
 import sys
+
+if sys.version_info < (2, 6):
+    raise RuntimeError('Python >= 2.6 is required')
+
+import io
 
 import distutils.core
 import distutils.command.build_py
 
-if sys.version_info < (2, 6):
-    raise RuntimeError('Python >= 2.6 is required')
 
 if sys.version_info >= (3,):
     build_py = distutils.command.build_py.build_py_2to3
