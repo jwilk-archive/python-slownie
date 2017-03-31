@@ -41,7 +41,6 @@ import distutils.core
 import distutils.command.build_py
 from distutils.command.sdist import sdist as distutils_sdist
 
-
 if sys.version_info >= (3,):
     build_py = distutils.command.build_py.build_py_2to3
 else:
