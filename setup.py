@@ -29,6 +29,7 @@ from __future__ import with_statement
 # supported, so that people running setup.py against the unsupported version
 # get a nice error message instead of SyntaxError.
 
+import io
 import sys
 
 import distutils.core
@@ -43,15 +44,9 @@ else:
     build_py = distutils.command.build_py.build_py
 
 def get_version():
-    d = {}
-    enc = {}
-    if sys.version_info >= (3,):
-        enc.update(encoding='UTF-8')
-    with open('slownie.py', **enc) as file:
-        for line in file:
-            if line.startswith('__version__ ='):
-                exec(line, d)
-    return d['__version__']
+    with io.open('doc/changelog', encoding='UTF-8') as file:
+        line = file.readline()
+    return line.split()[1].strip('()')
 
 classifiers = '''
 Development Status :: 4 - Beta
