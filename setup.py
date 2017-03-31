@@ -34,16 +34,30 @@ import sys
 if sys.version_info < (2, 6):
     raise RuntimeError('Python >= 2.6 is required')
 
+import os
 import io
 
 import distutils.core
 import distutils.command.build_py
+from distutils.command.sdist import sdist as distutils_sdist
 
 
 if sys.version_info >= (3,):
     build_py = distutils.command.build_py.build_py_2to3
 else:
     build_py = distutils.command.build_py.build_py
+
+class cmd_sdist(distutils_sdist):
+
+    def maybe_move_file(self, base_dir, src, dst):
+        src = os.path.join(base_dir, src)
+        dst = os.path.join(base_dir, dst)
+        if os.path.exists(src):
+            self.move_file(src, dst)
+
+    def make_release_tree(self, base_dir, files):
+        distutils_sdist.make_release_tree(self, base_dir, files)
+        self.maybe_move_file(base_dir, 'LICENSE', 'doc/LICENSE')
 
 def get_version():
     with io.open('doc/changelog', encoding='UTF-8') as file:
@@ -73,7 +87,10 @@ distutils.core.setup(
     author='Jakub Wilk',
     author_email='jwilk@jwilk.net',
     py_modules=['slownie'],
-    cmdclass=dict(build_py=build_py),
+    cmdclass=dict(
+        build_py=build_py,
+        sdist=cmd_sdist,
+    ),
 )
 
 # vim:ts=4 sts=4 sw=4 et
