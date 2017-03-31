@@ -1,8 +1,9 @@
 python-slownie (1.1) UNRELEASED; urgency=low
 
   * Drop support for Python 2.5.
+  * Put license into a separate file.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Mon, 20 Jul 2015 11:48:40 +0200
+ -- Jakub Wilk <jwilk@jwilk.net>  Fri, 31 Mar 2017 17:34:32 +0200
 
 python-slownie (1.0) unstable; urgency=low
 
