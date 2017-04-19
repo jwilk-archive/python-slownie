@@ -24,22 +24,15 @@
 *python-slownie* provides routines to spell out numbers in Polish.
 '''
 
-from __future__ import with_statement
-# Let's keep this __future__ import here, even though Python 2.5 is no longer
-# supported, so that people running setup.py against the unsupported version
-# get a nice error message instead of SyntaxError.
-
-import sys
-
-if sys.version_info < (2, 6):
-    raise RuntimeError('Python >= 2.6 is required')
-
-import os
 import io
+import os
+import sys
 
 import distutils.core
 import distutils.command.build_py
 from distutils.command.sdist import sdist as distutils_sdist
+
+b''  # Python >= 2.6 is required
 
 if sys.version_info >= (3,):
     build_py = distutils.command.build_py.build_py_2to3
