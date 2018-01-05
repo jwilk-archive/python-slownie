@@ -17,5 +17,8 @@ script:
 - cp -r build/lib*/slownie.py test/
 - python test/test.py --verbose
 - LC_ALL=C python setup.py --version
+- python setup.py install
+- cd /
+- python -c 'import slownie'
 
 # vim:ts=2 sts=2 sw=2 et
