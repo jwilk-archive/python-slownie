@@ -12,7 +12,11 @@ python:
 - "3.6"
 - "3.7-dev"
 - pypy3
+install:
+- pip install pydiatra pyflakes
 script:
+- python -m pydiatra .
+- pyflakes .
 - PYTHONPATH=$PWD python test/test.py --verbose
 - LC_ALL=C python setup.py --version
 - python setup.py install
