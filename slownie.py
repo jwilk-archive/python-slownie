@@ -24,7 +24,7 @@
 Polish spelled-out numbers
 '''
 
-from __future__ import unicode_literals
+from __future__ import unicode_literals  # Python >= 2.6 is required
 
 __author__ = 'Jakub Wilk <jwilk@jwilk.net>'
 __version__ = '1.1'
