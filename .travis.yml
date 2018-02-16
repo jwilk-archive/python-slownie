@@ -13,9 +13,7 @@ python:
 - "3.7-dev"
 - pypy3
 script:
-- python setup.py build
-- cp -r build/lib*/slownie.py test/
-- python test/test.py --verbose
+- PYTHONPATH=$PWD python test/test.py --verbose
 - LC_ALL=C python setup.py --version
 - python setup.py install
 - cd /

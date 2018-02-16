@@ -23,34 +23,37 @@
 '''
 Polish spelled-out numbers
 '''
+
+from __future__ import unicode_literals
+
 __author__ = 'Jakub Wilk <jwilk@jwilk.net>'
 __version__ = '1.1'
 
-SLOWNIE_1X = u'''
+SLOWNIE_1X = '''
 #        jeden      dwa       trzy       cztery      pięć       sześć      siedem       osiem       dziewięć
 dziesięć jedenaście dwanaście trzynaście czternaście piętnaście szesnaście siedemnaście osiemnaście dziewiętnaście
 '''.split()
 
-SLOWNIE_10X = u'''
+SLOWNIE_10X = '''
 # # dwadzieścia trzydzieści czterdzieści
-'''.split() + list(u'{n}dziesiąt'.format(n=SLOWNIE_1X[i]) for i in xrange(5, 10))
+'''.split() + list('{n}dziesiąt'.format(n=SLOWNIE_1X[i]) for i in range(5, 10))
 
-SLOWNIE_100X = u'''
+SLOWNIE_100X = '''
 # sto dwieście trzysta czterysta
-'''.split() + list(u'{n}set'.format(n=SLOWNIE_1X[i]) for i in xrange(5, 10))
+'''.split() + list('{n}set'.format(n=SLOWNIE_1X[i]) for i in range(5, 10))
 
 SLOWNIE_1X[0] = SLOWNIE_10X[0] = SLOWNIE_10X[1] = SLOWNIE_100X[0] = None
 
-PREFIXES = u'mi bi try kwadry kwinty seksty septy okty noni decy'.split()
+PREFIXES = 'mi bi try kwadry kwinty seksty septy okty noni decy'.split()
 
 SLOWNIE_1000XX = \
-    [None, (u'tysiąc', u'tysiące', u'tysięcy')] + \
-    list((base, base + u'y', base + u'ów') for i in xrange(2 * len(PREFIXES)) for base in [PREFIXES[i >> 1] + (i & 1 and u'liard' or u'lion')])
+    [None, ('tysiąc', 'tysiące', 'tysięcy')] + \
+    list((base, base + 'y', base + 'ów') for i in range(2 * len(PREFIXES)) for base in [PREFIXES[i >> 1] + (i & 1 and 'liard' or 'lion')])
 
-SLOWNIE_0 = u'zero'
+SLOWNIE_0 = 'zero'
 
-UNIT_ZLOTY = tuple(u'złot' + suffix for suffix in (u'y', u'e', u'ych'))
-UNIT_GROSZ = tuple(u'grosz' + suffix for suffix in (u'', u'e', u'y'))
+UNIT_ZLOTY = tuple('złot' + suffix for suffix in ('y', 'e', 'ych'))
+UNIT_GROSZ = tuple('grosz' + suffix for suffix in ('', 'e', 'y'))
 
 def inflect(i, forms):
     if forms is None:
@@ -77,7 +80,7 @@ def slownie999(i):
         words += [SLOWNIE_1X[i]]
     else:
         words += (SLOWNIE_10X[i // 10], SLOWNIE_1X[i % 10])
-    return u' '.join(word for word in words if word)
+    return ' '.join(word for word in words if word)
 
 def slownie(i, jeden=False, unit=None):
 
@@ -106,7 +109,7 @@ def slownie(i, jeden=False, unit=None):
             except IndexError:
                 raise ValueError('i >= 10 ** {n}'.format(n=3 * len(SLOWNIE_1000XX)))
         m += 1
-    return u' '.join(word for word in words if word)
+    return ' '.join(word for word in words if word)
 
 __all__ = ['slownie', 'UNIT_ZLOTY', 'UNIT_GROSZ']
 

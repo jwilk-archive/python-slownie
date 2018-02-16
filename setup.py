@@ -26,7 +26,6 @@
 
 import io
 import os
-import sys
 
 import distutils.core
 import distutils.command.build_py
@@ -40,11 +39,6 @@ else:
     distutils644.install()
 
 b''  # Python >= 2.6 is required
-
-if sys.version_info >= (3,):
-    build_py = distutils.command.build_py.build_py_2to3
-else:
-    build_py = distutils.command.build_py.build_py
 
 class cmd_sdist(distutils_sdist):
 
@@ -87,7 +81,6 @@ distutils.core.setup(
     author_email='jwilk@jwilk.net',
     py_modules=['slownie'],
     cmdclass=dict(
-        build_py=build_py,
         sdist=cmd_sdist,
     ),
 )
