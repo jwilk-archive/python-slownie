@@ -71,7 +71,7 @@ class TestSequenceFunctions(unittest.TestCase):
                 expected0, expected1 = expected
             else:
                 expected0 = expected1 = expected
-            if type('') is bytes:
+            if str is bytes:
                 expected0 = expected0.decode('UTF-8')
                 expected1 = expected1.decode('UTF-8')
             slownie.slownie(key) == expected0
