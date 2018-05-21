@@ -12,8 +12,12 @@ python:
 - "3.6"
 - "3.7-dev"
 - pypy3
+before_install:
+- pyflakes=pyflakes
+- if [[ $TRAVIS_PYTHON_VERSION = 2.6 ]]; then pyflakes='pyflakes<2'; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then pyflakes='pyflakes<2'; fi
 install:
-- pip install pydiatra pyflakes
+- pip install pydiatra $pyflakes
 script:
 - python -m pydiatra .
 - pyflakes .
