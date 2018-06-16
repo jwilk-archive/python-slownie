@@ -22,6 +22,7 @@ before_install:
 install:
 - pip install pydiatra $pyflakes
 script:
+- dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
 - python -m pydiatra .
 - pyflakes .
 - PYTHONPATH=$PWD python test/test.py --verbose
