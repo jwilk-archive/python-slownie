@@ -10,6 +10,7 @@ environment:
   - PYTHON: Python34
   - PYTHON: Python35
   - PYTHON: Python36
+  - PYTHON: Python37
 
 install:
 - set PATH=C:\\%PYTHON%;%PATH%
