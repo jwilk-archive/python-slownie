@@ -88,7 +88,6 @@ def slownie999(i):
     return ' '.join(word for word in words if word)
 
 def slownie(i, jeden=False, unit=None):
-
     i = int(i)
     if i < 0:
         raise ValueError('i < 0')
