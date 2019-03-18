@@ -75,8 +75,8 @@ class TestSequenceFunctions(unittest.TestCase):
             if str is bytes:
                 expected0 = expected0.decode('UTF-8')
                 expected1 = expected1.decode('UTF-8')
-            slownie.slownie(key) == expected0
-            slownie.slownie(key, jeden=True) == expected1
+            self.assertEqual(slownie.slownie(key), expected0)
+            self.assertEqual(slownie.slownie(key, jeden=True), expected1)
 
     def test_limits(self):
         def f_max():
