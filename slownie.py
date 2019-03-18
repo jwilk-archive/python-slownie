@@ -48,7 +48,11 @@ PREFIXES = 'mi bi try kwadry kwinty seksty septy okty noni decy'.split()
 
 SLOWNIE_1000XX = (
     [None, ('tysiąc', 'tysiące', 'tysięcy')] +
-    list((base, base + 'y', base + 'ów') for i in range(2 * len(PREFIXES)) for base in [PREFIXES[i >> 1] + (i & 1 and 'liard' or 'lion')])
+    list(
+        (base, base + 'y', base + 'ów')
+        for i in range(2 * len(PREFIXES))
+        for base in [PREFIXES[i >> 1] + (i & 1 and 'liard' or 'lion')]
+    )
 )
 
 SLOWNIE_0 = 'zero'
