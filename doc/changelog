@@ -1,12 +1,12 @@
 python-slownie (1.1) UNRELEASED; urgency=low
 
   * Fix the test suite.
-  * Drop support for Python 2.5.
+  * Drop support for Python 2.5 and 3.3.
   * Stop using to 2to3.
   * Put license into a separate file.
   * Use distutils644 to normalize source tarball permissions etc.
 
- -- Jakub Wilk <jwilk@jwilk.net>  Mon, 18 Mar 2019 08:46:50 +0100
+ -- Jakub Wilk <jwilk@jwilk.net>  Mon, 18 Mar 2019 11:12:56 +0100
 
 python-slownie (1.0) unstable; urgency=low
 
