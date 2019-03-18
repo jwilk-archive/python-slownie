@@ -39,6 +39,7 @@ else:
     distutils644.install()
 
 type(b'')  # Python >= 2.6 is required
+type(u'')  # Python 2.X or >= 3.3 is required
 
 class cmd_sdist(distutils_sdist):
 
