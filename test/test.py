@@ -24,6 +24,8 @@
 python-slownie test suite
 '''
 
+import io
+import os
 import unittest
 
 import slownie
@@ -65,6 +67,8 @@ data = {
 }
 # pylint: enable=line-too-long
 
+here = os.path.dirname(__file__)
+
 class Test(unittest.TestCase):
 
     def test_normal(self):
@@ -86,6 +90,13 @@ class Test(unittest.TestCase):
             slownie.slownie(-1)
         self.assertRaises(ValueError, f_max)
         self.assertRaises(ValueError, f_min)
+
+    def test_version(self):
+        path = os.path.join(here, os.pardir, 'doc', 'changelog')
+        with io.open(path, 'rt', encoding='UTF-8') as fp:
+            line = fp.readline()
+        changelog_version = line.split()[1].strip('()')
+        self.assertEqual(changelog_version, slownie.__version__)
 
 if __name__ == '__main__':
     unittest.main()
