@@ -65,7 +65,7 @@ data = {
 }
 # pylint: enable=line-too-long
 
-class TestSequenceFunctions(unittest.TestCase):
+class Test(unittest.TestCase):
 
     def test_normal(self):
         for key, expected in data.items():
