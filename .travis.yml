@@ -21,12 +21,21 @@ before_install:
 - pyflakes=pyflakes
 - if [[ $TRAVIS_PYTHON_VERSION = 2.6 ]]; then pyflakes='pyflakes<2'; fi
 - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then pyflakes='pyflakes<2'; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 2.6 ]]; then if_pylint=:; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then if_pylint=:; fi
 install:
 - pip install pydiatra $pyflakes
+- $if_pylint pip install pylint
+before_script:
+- distutils_pkg=$(python -c 'import os, distutils as d; print(os.path.dirname(d.__file__))')
+- echo "$distutils_pkg"
 script:
 - dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
 - python -m pydiatra .
 - pyflakes .
+- $if_pylint mv $distutils_pkg{,.bak}
+- $if_pylint python -m pylint *.py */*.py
+- $if_pylint mv $distutils_pkg{.bak,}
 - PYTHONPATH=$PWD python test/test.py --verbose
 - LC_ALL=C python setup.py --version
 - python setup.py install
