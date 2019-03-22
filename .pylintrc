@@ -7,6 +7,10 @@ disable =
     no-else-return,
     too-few-public-methods,
 
+[BASIC]
+# the API is quite evident
+no-docstring-rgx = .*
+
 [REPORTS]
 reports = no
 score = no
