@@ -54,8 +54,8 @@ class cmd_sdist(distutils_sdist):
         self.maybe_move_file(base_dir, 'LICENSE', 'doc/LICENSE')
 
 def get_version():
-    with io.open('doc/changelog', encoding='UTF-8') as file:
-        line = file.readline()
+    with io.open('doc/changelog', encoding='UTF-8') as fp:
+        line = fp.readline()
     return line.split()[1].strip('()')
 
 classifiers = '''
