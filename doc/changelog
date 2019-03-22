@@ -11,7 +11,7 @@ python-slownie (1.1) UNRELEASED; urgency=low
 python-slownie (1.0) unstable; urgency=low
 
   * Drop support for Python 2.4.
-  * Fix unicode error when running the setup script against Python 3.X and
+  * Fix Unicode error when running the setup script against Python 3.X and
     non-UTF-8 locale.
 
  -- Jakub Wilk <jwilk@jwilk.net>  Thu, 02 Jul 2015 20:00:17 +0200
