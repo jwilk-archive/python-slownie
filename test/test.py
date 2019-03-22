@@ -67,9 +67,6 @@ data = {
 
 class TestSequenceFunctions(unittest.TestCase):
 
-    def setUp(self):
-        self.seq = range(10)
-
     def test_normal(self):
         for key, expected in data.items():
             if isinstance(expected, tuple):
