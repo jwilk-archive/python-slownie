@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 '''
-*python-slownie* provides routines to spell out numbers in Polish.
+*python-slownie* lets you spell out numbers in Polish
 '''
 
 import io
