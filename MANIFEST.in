@@ -1,7 +1,6 @@
-include MANIFEST.in
-
 exclude README.rst
 include LICENSE
+include MANIFEST.in
 include doc/*
 include private/*
 include test/test.py
