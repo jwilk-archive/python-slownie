@@ -18,14 +18,13 @@ branches:
   except:
   - appveyor
 before_install:
-- if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then if_pygments=:; fi
 - pyflakes=pyflakes
 - if [[ $TRAVIS_PYTHON_VERSION = 2.6 ]]; then pyflakes='pyflakes<2'; fi
 - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then pyflakes='pyflakes<2'; fi
 - if [[ $TRAVIS_PYTHON_VERSION = 2.6 ]]; then if_pylint=:; fi
-- if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then if_pylint=:; fi
+- if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then if_pylint=:; fi
 install:
-- $if_pygments pip install docutils pygments
+- pip install docutils pygments
 - pip install pydiatra $pyflakes
 - $if_pylint pip install pylint
 before_script:
@@ -33,7 +32,7 @@ before_script:
 - echo "$distutils_pkg"
 script:
 - dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
-- $if_pygments private/check-rst
+- private/check-rst
 - python -m pydiatra .
 - pyflakes .
 - $if_pylint mv $distutils_pkg{,.bak}
