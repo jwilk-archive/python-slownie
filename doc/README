@@ -1,0 +1,17 @@
+Overview
+========
+
+**python-slownie** lets you spell out numbers in Polish:
+
+.. code:: pycon
+
+   >>> from slownie import *
+   >>> print(slownie(42007, unit=UNIT_ZLOTY))
+   czterdzieści dwa tysiące siedem złotych
+
+Prerequisites
+=============
+
+* Python ≥ 2.6 or ≥ 3.3
+
+.. vim:ft=rst ts=3 sts=3 sw=3 et
