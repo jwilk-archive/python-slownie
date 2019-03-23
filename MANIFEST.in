@@ -1,7 +1,6 @@
 include MANIFEST.in
 
 include LICENSE
-include doc/LICENSE
-include doc/changelog
+include doc/*
 include private/*
 include test/test.py
