@@ -29,15 +29,16 @@ install:
 - $if_pylint pip install pylint
 before_script:
 - distutils_pkg=$(python -c 'import os, distutils as d; print(os.path.dirname(d.__file__))')
-- echo "$distutils_pkg"
+- echo "$distutils_pkg" "$VIRTUAL_ENV"
+- if [[ $distutils_pkg != "${VIRTUAL_ENV%/}"/* ]]; then if_vdistutils=:; fi
 script:
 - dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
 - private/check-rst
 - python -m pydiatra .
 - pyflakes .
-- $if_pylint mv $distutils_pkg{,.bak}
+- $if_pylint $if_vdistutils mv $distutils_pkg{,.bak}
 - $if_pylint python -m pylint *.py */*.py
-- $if_pylint mv $distutils_pkg{.bak,}
+- $if_pylint $if_vdistutils mv $distutils_pkg{.bak,}
 - PYTHONPATH=$PWD python test/test.py --verbose
 - LC_ALL=C python setup.py --version
 - python setup.py install
