@@ -5,6 +5,7 @@ load-plugins = pylint.extensions.check_elif
 disable =
     invalid-name,
     no-else-return,
+    raise-missing-from,
     too-few-public-methods,
 
 [BASIC]
