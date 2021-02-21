@@ -86,10 +86,14 @@ class Test(unittest.TestCase):
     def test_limits(self):
         def f_max():
             slownie.slownie(10 ** 66)
-        def f_min():
-            slownie.slownie(-1)
+
+        #def f_min():
+        #    slownie.slownie(-1)
         self.assertRaises(ValueError, f_max)
-        self.assertRaises(ValueError, f_min)
+        #self.assertRaises(ValueError, f_min)
+
+    def test_minus(self):
+        self.assertEqual(slownie.slownie(-5), "minus pięć")
 
     def test_version(self):
         path = os.path.join(here, os.pardir, 'doc', 'changelog')

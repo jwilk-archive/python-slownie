@@ -91,7 +91,9 @@ def slownie999(i):
 def slownie(i, jeden=False, unit=None):
     i = int(i)
     if i < 0:
-        raise ValueError('i < 0')
+        i = i * -1
+        return u' '.join(["minus", slownie(i, jeden, unit)])
+        # raise ValueError('i < 0')
     if i == 0:
         words = [SLOWNIE_0]
     elif i == 1:
