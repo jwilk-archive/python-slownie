@@ -93,7 +93,7 @@ class Test(unittest.TestCase):
         #self.assertRaises(ValueError, f_min)
 
     def test_minus(self):
-        self.assertEqual(slownie.slownie(-5), "minus pięć")
+        self.assertEqual(slownie.slownie(-5), "minus pięć".decode('UTF-8'))
 
     def test_version(self):
         path = os.path.join(here, os.pardir, 'doc', 'changelog')
