@@ -84,12 +84,12 @@ class Test(unittest.TestCase):
             self.assertEqual(slownie.slownie(key, jeden=True), expected1)
 
     def test_limits(self):
-        def f_max():
+        with self.assertRaises(ValueError) as cm:
             slownie.slownie(10 ** 66)
-        def f_min():
+        self.assertEqual(str(cm.exception), 'i >= 10 ** 66')
+        with self.assertRaises(ValueError) as cm:
             slownie.slownie(-1)
-        self.assertRaises(ValueError, f_max)
-        self.assertRaises(ValueError, f_min)
+        self.assertEqual(str(cm.exception), 'i < 0')
 
     def test_noninteger(self):
         for i in [float('nan'), 1e999, 4.2]:
