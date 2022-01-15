@@ -3,9 +3,11 @@ load-plugins = pylint.extensions.check_elif
 
 [MESSAGES CONTROL]
 disable =
+    consider-using-f-string,
     invalid-name,
     no-else-return,
     raise-missing-from,
+    redundant-u-string-prefix,
     too-few-public-methods,
 
 [BASIC]
