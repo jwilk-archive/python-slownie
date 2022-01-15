@@ -28,7 +28,7 @@ type(b'')  # Python >= 2.6 is required
 type(u'')  # Python 2.X or >= 3.3 is required
 
 __author__ = 'Jakub Wilk <jwilk@jwilk.net>'
-__version__ = '1.1.1'
+__version__ = '1.2'
 
 SLOWNIE_1X = u'''
 #        jeden      dwa       trzy       cztery      pięć       sześć      siedem       osiem       dziewięć
