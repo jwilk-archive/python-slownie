@@ -89,6 +89,9 @@ def slownie999(i):
     return u' '.join(word for word in words if word)
 
 def slownie(i, jeden=False, unit=None):
+    i, frac = divmod(i, 1)
+    if frac != 0:
+        raise ValueError('i is not integer')
     i = int(i)
     if i < 0:
         raise ValueError('i < 0')

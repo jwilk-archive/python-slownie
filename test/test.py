@@ -91,6 +91,16 @@ class Test(unittest.TestCase):
         self.assertRaises(ValueError, f_max)
         self.assertRaises(ValueError, f_min)
 
+    def test_noninteger(self):
+        for i in [float('nan'), 1e999, 4.2]:
+            with self.assertRaises(ValueError) as cm:
+                slownie.slownie(i)
+            self.assertEqual(str(cm.exception), 'i is not integer')
+        self.assertEqual(
+            slownie.slownie(42.0),
+            slownie.slownie(42)
+        )
+
     def test_version(self):
         path = os.path.join(here, os.pardir, 'doc', 'changelog')
         with io.open(path, 'rt', encoding='UTF-8') as fp:
