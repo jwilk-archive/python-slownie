@@ -25,11 +25,16 @@ jobs:
           os: ubuntu-20.04
         - python: '3.10'
           os: ubuntu-20.04
+        - python: '3.10'
+          os: windows-2019
         - python: '3.11-dev'
           os: ubuntu-20.04
           broken: broken
     runs-on: ${{matrix.os}}
     continue-on-error: ${{(matrix.broken && true) || false}}
+    defaults:
+      run:
+        shell: bash
     steps:
     - uses: actions/checkout@v2
     - name: set up Python ${{matrix.python}}
@@ -67,11 +72,13 @@ jobs:
         python -m pylint *.py */*.py
       if:
         matrix.python != '3.3' &&
-        matrix.python != '3.4'
+        matrix.python != '3.4' &&
+        ! startsWith(matrix.os, 'windows-')
     - name: check docs
       run: |
         dpkg-parsechangelog -ldoc/changelog --all 2>&1 >/dev/null | { ! grep .; }
         python -m pip install docutils pygments
         private/check-rst
+      if: true && ! startsWith(matrix.os, 'windows-')
 
 # vim:ts=2 sts=2 sw=2 et
