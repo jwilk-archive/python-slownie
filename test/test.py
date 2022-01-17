@@ -92,14 +92,19 @@ class Test(unittest.TestCase):
                     continue
                 self.assertEqual(slownie.slownie(i), expected0)
                 self.assertEqual(slownie.slownie(i, jeden=True), expected1)
+                if i > 0:
+                    i = tp(-k)
+                    assert i == -k
+                    self.assertEqual(slownie.slownie(i), u'minus ' + expected0)
+                    self.assertEqual(slownie.slownie(i, jeden=True), u'minus ' + expected1)
 
     def test_limits(self):
         with self.assertRaises(ValueError) as cm:
             slownie.slownie(10 ** 66)
         self.assertEqual(str(cm.exception), 'i >= 10 ** 66')
         with self.assertRaises(ValueError) as cm:
-            slownie.slownie(-1)
-        self.assertEqual(str(cm.exception), 'i < 0')
+            slownie.slownie(-10 ** 66)
+        self.assertEqual(str(cm.exception), 'i <= - 10 ** 66')
 
     def test_noninteger(self):
         for tp in [float, decimal.Decimal]:

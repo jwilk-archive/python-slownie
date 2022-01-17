@@ -92,9 +92,7 @@ def slownie(i, jeden=False, unit=None):
     ii = int(i)
     if i != ii:
         raise ValueError('i is not integer')
-    i = ii
-    if i < 0:
-        raise ValueError('i < 0')
+    i = abs(ii)
     if i == 0:
         words = [SLOWNIE_0]
     elif i == 1:
@@ -116,8 +114,16 @@ def slownie(i, jeden=False, unit=None):
                 words = [t, inflect(j, SLOWNIE_1000XX[m])] + words
             except IndexError:
                 exp = 3 * len(SLOWNIE_1000XX)
-                raise ValueError('i >= 10 ** {n}'.format(n=exp))
+                if ii > 0:
+                    rel = '>='
+                    sign = ''
+                else:
+                    rel = '<='
+                    sign = '- '
+                raise ValueError('i {rel} {sgn}10 ** {n}'.format(rel=rel, sgn=sign, n=exp))
         m += 1
+    if ii < 0:
+        words = [u'minus'] + words
     return u' '.join(word for word in words if word)
 
 __all__ = ['slownie', 'UNIT_ZLOTY', 'UNIT_GROSZ']
