@@ -27,8 +27,8 @@ python-slownie test suite
 import decimal
 import io
 import os
-import unittest
 import sys
+import unittest
 
 import slownie
 
