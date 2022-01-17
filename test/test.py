@@ -24,9 +24,11 @@
 python-slownie test suite
 '''
 
+import decimal
 import io
 import os
 import unittest
+import sys
 
 import slownie
 
@@ -71,6 +73,9 @@ here = os.path.dirname(__file__)
 
 class Test(unittest.TestCase):
 
+    if sys.version_info < (3, 1):
+        assertRaisesRegex = unittest.TestCase.assertRaisesRegexp
+
     def test_normal(self):
         for key, expected in data.items():
             if isinstance(expected, tuple):
@@ -92,10 +97,16 @@ class Test(unittest.TestCase):
         self.assertEqual(str(cm.exception), 'i < 0')
 
     def test_noninteger(self):
-        for i in [float('nan'), 1e999, 4.2]:
-            with self.assertRaises(ValueError) as cm:
+        for tp in float, decimal.Decimal:
+            i = tp('nan')
+            with self.assertRaisesRegex(ValueError, '^[Cc]annot convert ') as cm:
                 slownie.slownie(i)
-            self.assertEqual(str(cm.exception), 'i is not integer')
+            for i in tp('inf'), tp('-inf'):
+                with self.assertRaisesRegex(OverflowError, '^[Cc]annot convert ') as cm:
+                    slownie.slownie(i)
+        with self.assertRaises(ValueError) as cm:
+            slownie.slownie(4.2)
+        self.assertEqual(str(cm.exception), 'i is not integer')
         self.assertEqual(
             slownie.slownie(42.0),
             slownie.slownie(42)
