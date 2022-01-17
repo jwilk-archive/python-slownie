@@ -104,10 +104,10 @@ class Test(unittest.TestCase):
     def test_noninteger(self):
         for tp in float, decimal.Decimal:
             i = tp('nan')
-            with self.assertRaisesRegex(ValueError, '^[Cc]annot convert ') as cm:
+            with self.assertRaisesRegex(ValueError, '^[Cc]annot convert '):
                 slownie.slownie(i)
             for i in tp('inf'), tp('-inf'):
-                with self.assertRaisesRegex(OverflowError, '^[Cc]annot convert ') as cm:
+                with self.assertRaisesRegex(OverflowError, '^[Cc]annot convert '):
                     slownie.slownie(i)
         for i in [4.2, decimal.Decimal('4.2'), fractions.Fraction(42, 10)]:
             with self.assertRaises(ValueError) as cm:
