@@ -115,7 +115,8 @@ def slownie(i, jeden=False, unit=None):
             try:
                 words = [t, inflect(j, SLOWNIE_1000XX[m])] + words
             except IndexError:
-                raise ValueError('i >= 10 ** {n}'.format(n=3 * len(SLOWNIE_1000XX)))
+                exp = 3 * len(SLOWNIE_1000XX)
+                raise ValueError('i >= 10 ** {n}'.format(n=exp))
         m += 1
     return u' '.join(word for word in words if word)
 
