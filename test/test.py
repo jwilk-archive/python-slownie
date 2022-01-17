@@ -25,6 +25,7 @@ python-slownie test suite
 '''
 
 import decimal
+import fractions
 import io
 import os
 import sys
@@ -77,7 +78,7 @@ class Test(unittest.TestCase):
         assertRaisesRegex = unittest.TestCase.assertRaisesRegexp
 
     def test_normal(self):
-        for key, expected in data.items():
+        for k, expected in data.items():
             if isinstance(expected, tuple):
                 expected0, expected1 = expected
             else:
@@ -85,8 +86,12 @@ class Test(unittest.TestCase):
             if str is bytes:
                 expected0 = expected0.decode('UTF-8')
                 expected1 = expected1.decode('UTF-8')
-            self.assertEqual(slownie.slownie(key), expected0)
-            self.assertEqual(slownie.slownie(key, jeden=True), expected1)
+            for tp in [int, float, decimal.Decimal, fractions.Fraction]:
+                i = tp(k)
+                if i != k:
+                    continue
+                self.assertEqual(slownie.slownie(i), expected0)
+                self.assertEqual(slownie.slownie(i, jeden=True), expected1)
 
     def test_limits(self):
         with self.assertRaises(ValueError) as cm:
@@ -107,10 +112,6 @@ class Test(unittest.TestCase):
         with self.assertRaises(ValueError) as cm:
             slownie.slownie(4.2)
         self.assertEqual(str(cm.exception), 'i is not integer')
-        self.assertEqual(
-            slownie.slownie(42.0),
-            slownie.slownie(42)
-        )
 
     def test_version(self):
         path = os.path.join(here, os.pardir, 'doc', 'changelog')
