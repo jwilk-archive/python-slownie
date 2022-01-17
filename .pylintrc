@@ -14,6 +14,9 @@ disable =
 # the API is quite evident
 no-docstring-rgx = .*
 
+[DESIGN]
+max-branches = 15
+
 [REPORTS]
 reports = no
 score = no
