@@ -109,9 +109,10 @@ class Test(unittest.TestCase):
             for i in tp('inf'), tp('-inf'):
                 with self.assertRaisesRegex(OverflowError, '^[Cc]annot convert ') as cm:
                     slownie.slownie(i)
-        with self.assertRaises(ValueError) as cm:
-            slownie.slownie(4.2)
-        self.assertEqual(str(cm.exception), 'i is not integer')
+        for i in [4.2, decimal.Decimal('4.2'), fractions.Fraction(42, 10)]:
+            with self.assertRaises(ValueError) as cm:
+                slownie.slownie(i)
+            self.assertEqual(str(cm.exception), 'i is not integer')
 
     def test_version(self):
         path = os.path.join(here, os.pardir, 'doc', 'changelog')
