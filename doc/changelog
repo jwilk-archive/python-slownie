@@ -1,6 +1,8 @@
 python-slownie (1.2) UNRELEASED; urgency=low
 
-  * 
+  * Add support for negative numbers.
+    Thanks to @GorlikItsMe for the bug report and the initial patch.
+    https://github.com/jwilk/python-slownie/pull/1
 
  -- Jakub Wilk <jwilk@jwilk.net>  Sat, 15 Jan 2022 19:28:48 +0100
 
