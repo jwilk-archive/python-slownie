@@ -25,11 +25,11 @@ jobs:
           os: ubuntu-20.04
         - python: '3.10'
           os: ubuntu-20.04
-        - python: '3.10'
-          os: windows-2019
         - python: '3.11-dev'
           os: ubuntu-20.04
           broken: broken
+        - python: '3.10'
+          os: windows-2019
     runs-on: ${{matrix.os}}
     continue-on-error: ${{(matrix.broken && true) || false}}
     defaults:
