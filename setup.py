@@ -77,7 +77,7 @@ distutils.core.setup(
     description='Polish spelled-out numbers',
     long_description=__doc__.strip(),
     classifiers=classifiers,
-    url='http://jwilk.net/software/python-slownie',
+    url='https://jwilk.net/software/python-slownie',
     author='Jakub Wilk',
     author_email='jwilk@jwilk.net',
     py_modules=['slownie'],
