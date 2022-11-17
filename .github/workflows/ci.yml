@@ -28,6 +28,8 @@ jobs:
           os: ubuntu-22.04
         - python: '3.11'
           os: ubuntu-22.04
+        - python: '3.12-dev'
+          os: ubuntu-22.04
         # Windows:
         - python: '2.7'
           os: windows-2019
