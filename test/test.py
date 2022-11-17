@@ -75,7 +75,7 @@ here = os.path.dirname(__file__)
 class Test(unittest.TestCase):
 
     if sys.version_info < (3, 1):
-        assertRaisesRegex = unittest.TestCase.assertRaisesRegexp
+        assertRaisesRegex = unittest.TestCase.assertRaisesRegexp  # pylint:disable=no-member
 
     def test_normal(self):
         for k, expected in data.items():
