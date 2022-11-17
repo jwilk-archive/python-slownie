@@ -27,9 +27,11 @@
 import io
 import os
 
+# pylint: disable=deprecated-module
 import distutils.core
 import distutils.command.build_py
 from distutils.command.sdist import sdist as distutils_sdist
+# pylint: enable=deprecated-module
 
 try:
     import distutils644
